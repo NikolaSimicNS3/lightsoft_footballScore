@@ -1,0 +1,59 @@
+
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+
+
+  <a class="navbar-brand" routerLink="/" [queryParams]="{ choise: 'home'} "><div class="site-logo">
+    <img src="/assets/images/logo.png" style="max-height: 70px;">Home</div></a>
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> -->
+
+
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+
+      <ng-container *ngIf="league !== null ; else noLeagueS">
+        <a class="navbar-brand" routerLink="/" [queryParams]="{ choise: 'stading',league:league} ">Standing</a>
+      </ng-container>
+
+
+      <ng-template #noLeagueS>
+
+        <a class="navbar-brand" routerLink="/" [queryParams]="{ choise: 'stading'} ">Standing</a>
+
+      </ng-template>
+
+      <ng-container *ngIf="league !== null ; else noLeagueF">
+        <a class="navbar-brand" routerLink="/" [queryParams]="{ choise: 'fixtures',league:league} ">Fixtures</a>
+      </ng-container>
+
+      <ng-container *ngIf="league !== null ; else noLeagueFF">
+        <a class="navbar-brand" routerLink="/" [queryParams]="{ choise: 'futurefixtures',league:league} ">Futrure Fixtures</a>
+      </ng-container>
+
+
+      <ng-template #noLeagueF>
+
+        <a class="navbar-brand" routerLink="/" [queryParams]="{ choise: 'fixtures'} ">Fixtures</a>
+
+      </ng-template>
+      <ng-template #noLeagueFF>
+
+        <a class="navbar-brand" routerLink="/" [queryParams]="{ choise: 'futurefixtures'} ">Future Fixtures</a>
+
+      </ng-template>
+
+
+       <!--
+        <a *ngFor="let li of leagues"
+        routerLink="/stading"
+        [queryParams]="{ league: li.id} "
+         [class]="league === li.id" class="list-group-item" class="list-group-item-action" >
+         <br>
+        <div id="tab"><p class="text-white"><b>{{ li.l | uppercase}}</b></p></div>
+      </a> -->
+    </ul>
+
+  </div>
+</nav>
